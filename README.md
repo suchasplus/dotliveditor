@@ -6,3 +6,5 @@ to build win32 runtime
 
 `npm run build darwin`
 to build MacOS runtime
+
+![ScreenShot](http://wx2.sinaimg.cn/large/61d779dfly1feivnfvfqlj211v0lcq4t.jpg)
