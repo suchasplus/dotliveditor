@@ -1,0 +1,39 @@
+{
+  "name": "dotle",
+  "version": "1.0.0",
+  "description": "dot live editor",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "build": "node build.js"
+  },
+  "keywords": [],
+  "author": "suchasplus <wenyue1@staff.weibo.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "dom-parser": "^0.1.5",
+    "co": "^4.6.0",
+    "is_js": "^0.9.0",
+    "codemirror": "^5.25.0",
+    "glob-promise": "^3.1.0",
+    "fs-extra-promise": "^0.4.1",
+    "jquery": "^3.2.1",
+    "viz.js":"^1.7.1",
+    "select2":"^4.0.3",
+    "select2-bootstrap-theme":"^0.1.0-beta.10",
+    "electron-settings": "^3.0.14"
+  },
+  "devDependencies": {
+    "electron-prebuilt": "^1.4.13",
+    "electron-packager":"^8.6.0",
+    "devtron": "^1.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suchasplus/dotliveditor.git"
+  },
+  "homepage": "https://github.com/suchasplus/dotliveditor"
+}

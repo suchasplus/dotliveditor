@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dot Live Editor</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="node_modules/select2-bootstrap-theme/dist/select2-bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/codemirror/lib/codemirror.css">
+    <!-- https://codemirror.net/demo/theme.html -->
+    <link rel="stylesheet" href="node_modules/codemirror/theme/3024-day.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/3024-night.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/abcdef.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/ambiance.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/base16-dark.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/bespin.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/base16-light.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/blackboard.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/cobalt.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/colorforth.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/dracula.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/duotone-dark.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/duotone-light.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/eclipse.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/elegant.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/erlang-dark.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/hopscotch.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/icecoder.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/isotope.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/lesser-dark.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/liquibyte.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/material.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/mbo.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/midnight.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/monokai.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/neat.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/neo.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/night.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/paraiso-dark.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/paraiso-light.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/pastel-on-dark.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/railscasts.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/seti.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/solarized.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/tomorrow-night-bright.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/tomorrow-night-eighties.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/ttcn.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/twilight.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/vibrant-ink.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/xq-dark.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/xq-light.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/yeti.css">
+    <link rel="stylesheet" href="node_modules/codemirror/theme/zenburn.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="node_modules/select2/dist/css/select2.min.css">
+</head>
+<body>
+<header>
+    <div style="float:left;"> <!--<u>O</u> -->
+        <button class="btn btn-default btn-sm" id="btnOpen">Open Dot</button>
+        <button class="btn btn-default btn-sm" id="btnSave">Save Dot</button>
+        <button class="btn btn-default btn-sm" id="btnSVG">Save as SVG</button>
+        <button class="btn btn-default btn-sm" id="btnPNG" style="display: none;"><u>S</u>ave as PNG</button>
+        <!--<button class="btn btn-primary btn-sm" id="dialog">dialog</button>-->
+    </div>
+    <div style="float:right;">
+    <form class="form-inline">
+        <!--
+        <div class="form-group">
+            <label for="openFile" class="sr-only">File</label>
+            <input type="text" class="form-control input-sm" id="openFile" placeholder="FilePH">
+        </div>
+        <button class="btn btn-default btn-sm" id="btnNew"><u>N</u>ew DOT</button>
+        <button class="btn btn-default btn-sm" id="btnOpen"><u>O</u>pen DOT</button>
+        <button class="btn btn-default btn-sm" id="btnSave"><u>S</u>ave DOT</button>
+        <button class="btn btn-default btn-sm" id="btnExport">Export SVG</button>
+        <button class="btn btn-default btn-sm" id="btnPreview"><u>P</u>review</button>
+        -->
+        <button class="btn btn-default btn-sm" id="btnSync">AutoPreview</button>
+        <button class="btn btn-primary btn-sm" id="btnSwitchSide">SwitchSide</button>
+        <div class="form-group">
+            <div class="btn-group">
+                <button class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon-zoom-in"></span>
+                    <span id="zoomRate">100%</span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" id="zoomRateList">
+                    <li><a href="#">400%</a></li>
+                    <li><a href="#">300%</a></li>
+                    <li><a href="#">200%</a></li>
+                    <li><a href="#">150%</a></li>
+                    <li><a href="#">125%</a></li>
+                    <li><a href="#">100%</a></li>
+                    <li><a href="#">75%</a></li>
+                    <li><a href="#">50%</a></li>
+                    <li><a href="#">25%</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="form-group select2-wrapper">
+            <select title="themes-selector" class="form-control input-sm select2-single" dir="rtl" id="themeSelector">
+                <option></option>
+                <option value="default">default</option>
+                <option value="3024-day">3024-day</option>
+                <option value="3024-night">3024-night</option>
+                <option value="abcdef">abcdef</option>
+                <option value="ambiance">ambiance</option>
+                <option value="base16-dark">base16-dark</option>
+                <option value="base16-light">base16-light</option>
+                <option value="bespin">bespin</option>
+                <option value="blackboard">blackboard</option>
+                <option value="cobalt">cobalt</option>
+                <option value="colorforth">colorforth</option>
+                <option value="dracula">dracula</option>
+                <option value="duotone-dark">duotone-dark</option>
+                <option value="duotone-light">duotone-light</option>
+                <option value="eclipse">eclipse</option>
+                <option value="elegant">elegant</option>
+                <option value="erlang-dark">erlang-dark</option>
+                <option value="hopscotch">hopscotch</option>
+                <option value="icecoder">icecoder</option>
+                <option value="isotope">isotope</option>
+                <option value="lesser-dark">lesser-dark</option>
+                <option value="liquibyte">liquibyte</option>
+                <option value="material">material</option>
+                <option value="mbo">mbo</option>
+                <option value="mdn-like">mdn-like</option>
+                <option value="midnight">midnight</option>
+                <option value="monokai">monokai</option>
+                <option value="neat">neat</option>
+                <option value="neo">neo</option>
+                <option value="night">night</option>
+                <option value="panda-syntax">panda-syntax</option>
+                <option value="paraiso-dark">paraiso-dark</option>
+                <option value="paraiso-light">paraiso-light</option>
+                <option value="pastel-on-dark">pastel-on-dark</option>
+                <option value="railscasts">railscasts</option>
+                <option value="rubyblue">rubyblue</option>
+                <option value="seti">seti</option>
+                <option value="solarizeddark">solarizeddark</option>
+                <option value="solarizedlight">solarizedlight</option>
+                <option value="the-matrix">the-matrix</option>
+                <option value="tomorrow-night-bright">tomorrow-night-bright</option>
+                <option value="tomorrow-night-eighties">tomorrow-night-eighties</option>
+                <option value="ttcn">ttcn</option>
+                <option value="twilight">twilight</option>
+                <option value="vibrant-ink">vibrant-ink</option>
+                <option value="xq-dark">xq-dark</option>
+                <option value="xq-light">xq-light</option>
+                <option value="yeti">yeti</option>
+                <option value="zenburn">zenburn</option>
+            </select>
+        </div>
+    </form>
+    </div>
+</header>
+<div class="content">
+    <div class="content-item">
+        <textarea title="editor" name="editor" id="editor"></textarea>
+    </div>
+    <div class="content-item" id="preview"></div>
+</div>
+<footer><div id="opened-file" style="float:left"></div><div id="theme-now" style="float:right"></div></footer>
+<div id="message-area" class="alert-message-area"></div>
+<script>
+    window.jQuery = window.$ = require("jquery");
+    window.viz = require("viz.js");
+</script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="node_modules/select2/dist/js/select2.full.min.js"></script>
+<script src="node_modules/codemirror/lib/codemirror.js"></script>
+<script src="node_modules/codemirror/mode/javascript/javascript.js"></script>
+<script src="node_modules/codemirror/addon/selection/active-line.js"></script>
+<script src="node_modules/codemirror/addon/edit/matchbrackets.js"></script>
+<script src="app/binding.js"></script>
+</body>
+</html>

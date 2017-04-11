@@ -1,0 +1,52 @@
+html, body {
+    min-height: 100vh;
+    overflow: hidden;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+header {
+    height: 40px;
+    background-color: #50514F;
+    color: #F4F3EE;
+    padding: 5px;
+}
+footer {
+    height: 27px;
+    background-color: #50514F;
+    color: #F4F3EE;
+    padding: 5px;
+}
+#openFile {
+    width: 40vw;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+}
+.content-item {
+    width: 50vw;
+}
+#preview {
+    background-color: #DFE0E2;
+    max-height: calc(100vh - 67px);
+    overflow: auto;
+}
+
+#editor {
+    display: none;
+}
+
+.CodeMirror {
+    border: 1px solid #50514F;
+    height: calc(100vh - 67px);
+}
+
+.alert-message-area {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+}
